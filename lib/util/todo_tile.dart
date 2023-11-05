@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class ToDoTile extends StatelessWidget {
@@ -14,18 +16,26 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.only(left: 18, right: 18, top: 18),
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(8),
         child: Row(children: [
-          Checkbox(value: taskCompleated, onChanged: onChanged),
+          Checkbox(
+            value: taskCompleated,
+            onChanged: onChanged,
+          ),
           Text(
             taskName,
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                decoration: taskCompleated
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none),
           )
         ]),
         decoration: BoxDecoration(
-            color: Colors.deepPurple, borderRadius: BorderRadius.circular(24)),
+            color: Colors.deepPurple, borderRadius: BorderRadius.circular(18)),
       ),
     );
   }
